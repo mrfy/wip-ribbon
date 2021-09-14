@@ -1,4 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp, defineCustomElement } from "vue";
 
-createApp(App).mount('#app')
+import SynapstryRibbon from "./SynapstryRibbon.vue";
+
+// createApp(SynapstryRibbon).mount("#app");
+
+const synapstryRibbonCE = defineCustomElement(SynapstryRibbon);
+
+customElements.define("synapstry-ribbon", synapstryRibbonCE);
