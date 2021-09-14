@@ -12,13 +12,30 @@ import { Bar } from "../types";
 import { computed, defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  name: "App",
+  name: "ToolTip",
   template: "#itemToolTip",
   props: {
     x: { type: Number, default: 0 },
     y: { type: Number, default: 0 },
     bar: { type: Object as PropType<Bar>, required: true },
   },
+  styles: [
+    `
+    .toolTip {
+  position: absolute;
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px 0;
+  pointer-events: none;
+}
+
+.toolTip > p {
+  color: white;
+  text-align: left;
+  padding: 1px;
+  margin: 1px 10px 1px 10px;
+}`,
+  ],
   setup(props) {
     const position = computed(() => {
       return {

@@ -1,6 +1,6 @@
 <template id="Synapstry-Ribbon-Bar">
   <div ref="resizeRef" class="ribbon-container">
-    <Tooltip
+    <tool-tip
       v-if="showTooltip && tooltipObj.tooltipVisible"
       :x="tooltipObj.toolTipX"
       :y="tooltipObj.toolTipY"
@@ -59,8 +59,47 @@ export default defineComponent({
     showScale: { type: Boolean, default: true },
     showTooltip: { type: Boolean, default: true },
   },
+  styles: [
+    `
+    .ribbon-container {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  max-width: 100%;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.ribbon {
+  /* important for responsiveness */
+  display: block;
+  fill: none;
+  stroke: none;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  width: -webkit-fill-available;
+
+  .toolTip {
+  position: absolute;
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px 0;
+  pointer-events: none;
+ }
+
+.toolTip > p {
+  color: white;
+  text-align: left;
+  padding: 1px;
+  margin: 1px 10px 1px 10px;
+
+
+}`,
+  ],
   components: {
-    Tooltip,
+    "tool-tip": Tooltip,
   },
   setup(props) {
     const svgRef = ref(null);
